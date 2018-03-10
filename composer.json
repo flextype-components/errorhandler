@@ -2,7 +2,7 @@
   "name": "force/errorhandler",
   "keywords": ["errorhandler", "error", "force"],
   "license": "MIT",
-  "homepage": "https://github.com/force-components/ErrorHandler/issues",
+  "homepage": "https://github.com/force-components/ErrorHandler",
   "description": "Error handler class",
   "authors": [
     {
