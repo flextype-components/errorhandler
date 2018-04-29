@@ -108,7 +108,7 @@ body {
 
     <div class="error">
     <?php echo $error['type']; ?><?php if(isset($error['code'])): ?> <span style="color:#e1e1e1;padding:0px">[<?php echo $error['code']; ?>]</span><?php endif; ?>
-    <span class="pull-right">Gelato</span>
+    <span class="pull-right">Error Handler</span>
     </div>
     <div class="body">
     <strong>Message:</strong> <?php echo htmlspecialchars($error['message'], ENT_COMPAT, 'UTF-8', false); ?>
@@ -275,10 +275,6 @@ body {
     </tr>
     <?php endforeach; ?>
     </table>
-    </div>
-    <div style="padding-top:20px;padding-bottom:20px; padding-left:10px;">
-        <a href="http://monstra.org">MONSTRA</a>
-        <a href="http://gelato.monstra.org">GELATO</a>
     </div>
 </div>
 

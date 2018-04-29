@@ -35,13 +35,12 @@ class ErrorHandler
     /**
      * Returns an array of lines from a file.
      *
-     * @access  public
      * @param  string $file    File in which you want to highlight a line
      * @param  int    $line    Line number to highlight
      * @param  int    $padding (optional) Number of padding lines
      * @return array
      */
-    protected static function highlightCode($file, $line, $padding = 6)
+    protected static function highlightCode(string $file, int $line, int $padding = 6) : array
     {
         if ( ! is_readable($file)) {
             return false;
@@ -78,13 +77,13 @@ class ErrorHandler
     /**
      * Converts errors to ErrorExceptions.
      *
-     * @param  integer $code    The error code
+     * @param  int     $code    The error code
      * @param  string  $message The error message
      * @param  string  $file    The filename where the error occurred
-     * @param  integer $line    The line number where the error occurred
-     * @return boolean
+     * @param  int     $line    The line number where the error occurred
+     * @return bool
      */
-    public static function error($code, $message, $file, $line)
+    public static function error(int $code, string $message, string $file, int $line) : bool
     {
         // If isset error_reporting and $code then throw new error exception
         if ((error_reporting() & $code) !== 0) {
@@ -111,7 +110,7 @@ class ErrorHandler
                 ErrorHandler::writeLogs("{$error['type']}: {$error['message']} in {$error['file']} at line {$error['line']}");
 
             } else {
-                throw new ErrorException($message, $code, 0, $file, $line);
+                throw new \ErrorException($message, $code, 0, $file, $line);
             }
         }
 
@@ -125,7 +124,7 @@ class ErrorHandler
      * @param  string $string String
      * @return string
      */
-    protected static function highlightString($string)
+    protected static function highlightString(string $string) : string
     {
         $search  = array("\r\n", "\n\r", "\r", "\n", '<code>', '</code>', '<span style="color: #0000BB">&lt;?php&nbsp;', '#$@r4!/*');
         $replace = array('', '', '', '', '', '', '<span style="color: #0000BB">', '/*');
@@ -136,11 +135,10 @@ class ErrorHandler
     /**
      * Modifies the backtrace array.
      *
-     * @access  protected
      * @param  array $backtrace Array returned by the getTrace() method of an exception object
      * @return array
      */
-    protected static function formatBacktrace($backtrace)
+    protected static function formatBacktrace(array $backtrace) : array
     {
         if (is_array($backtrace) === false || count($backtrace) === 0) {
             return $backtrace;
@@ -223,7 +221,7 @@ class ErrorHandler
         $e = error_get_last();
 
         if ($e !== null && (error_reporting() & $e['type']) !== 0) {
-            ErrorHandler::exception(new ErrorException($e['message'], $e['type'], 0, $e['file'], $e['line']));
+            ErrorHandler::exception(new \ErrorException($e['message'], $e['type'], 0, $e['file'], $e['line']));
 
             exit(1);
         }
@@ -232,11 +230,10 @@ class ErrorHandler
     /**
      * Writes message to log.
      *
-     * @access  public
      * @param  string  $message The message to write to the log
-     * @return boolean
+     * @return bool
      */
-    public static function writeLogs($message)
+    public static function writeLogs(string $message) : bool
     {
         return (bool) file_put_contents(rtrim(LOGS_PATH, '/') . '/' . gmdate('Y_m_d') . '.log',
                                         '[' . gmdate('d-M-Y H:i:s') . '] ' . $message . PHP_EOL,
@@ -246,7 +243,6 @@ class ErrorHandler
     /**
      * Handles uncaught exceptions and returns a pretty error screen.
      *
-     * @access  public
      * @param Exception $exception An exception object
      */
     public static function exception($exception)
@@ -263,7 +259,7 @@ class ErrorHandler
             $error['line']    = $exception->getLine();
 
             // Determine error type
-            if ($exception instanceof ErrorException) {
+            if ($exception instanceof \ErrorException) {
                 $error['type'] = 'ErrorException: ';
                 $error['type'] .= in_array($error['code'], array_keys(ErrorHandler::$levels)) ? ErrorHandler::$levels[$error['code']] : 'Unknown Error';
             } else {
@@ -280,7 +276,7 @@ class ErrorHandler
 
                 $error['backtrace'] = $exception->getTrace();
 
-                if ($exception instanceof ErrorException) {
+                if ($exception instanceof \ErrorException) {
                     $error['backtrace'] = array_slice($error['backtrace'], 1); //Remove call to error handler from backtrace
                 }
 

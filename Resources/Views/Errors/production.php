@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Error</title>
+<title>Error Handler</title>
 <style type="text/css">
 body {
     height:100%;

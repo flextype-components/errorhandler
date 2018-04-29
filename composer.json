@@ -4,7 +4,7 @@
   "type": "library",
   "license": "MIT",
   "homepage": "https://github.com/flextype-components/errorhandler",
-  "description": "",
+  "description": "Error Handler Component for errors handling.",
   "authors": [
     {
         "name": "Sergey Romanenko",
