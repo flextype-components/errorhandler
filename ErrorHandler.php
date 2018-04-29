@@ -284,12 +284,12 @@ class ErrorHandler
                 $error['highlighted'] = self::highlightCode($error['file'], $error['line']);
 
                 @header('HTTP/1.1 500 Internal Server Error');
-                include 'Resources/Views/Errors/exception.php';
+                include 'views/exception.php';
 
             } else {
 
                 @header('HTTP/1.1 500 Internal Server Error');
-                include 'Resources/Views/Errors/production.php';
+                include 'views/production.php';
 
             }
 
