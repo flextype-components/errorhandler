@@ -1,13 +1,16 @@
 <?php
 
 /**
- * This file is part of the Force Components.
+ * @package Flextype Components
  *
- * (c) Romanenko Sergey / Awilum <awilum@msn.com>
+ * @author Sergey Romanenko <awilum@yandex.ru>
+ * @link http://components.flextype.org
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+
+namespace Flextype\Component\ErrorHandler;
 
 class ErrorHandler
 {
@@ -28,16 +31,6 @@ class ErrorHandler
         E_USER_WARNING      => 'Warning',
         E_USER_ERROR        => 'Error',
     );
-
-    /**
-     * Protected constructor since this is a static class.
-     *
-     * @access  protected
-     */
-    protected function __construct()
-    {
-        // Nothing here
-    }
 
     /**
      * Returns an array of lines from a file.
@@ -163,7 +156,7 @@ class ErrorHandler
         /**
          * Format backtrace
          */
-        $trace = array();
+        $trace = [];
 
         foreach ($backtrace as $entry) {
 
@@ -181,7 +174,7 @@ class ErrorHandler
             /**
              * Arguments
              */
-            $arguments = array();
+            $arguments = [];
 
             if (isset($entry['args']) && count($entry['args']) > 0) {
                 foreach ($entry['args'] as $arg) {
@@ -200,7 +193,7 @@ class ErrorHandler
             /**
              * Location
              */
-            $location = array();
+            $location = [];
 
             if (isset($entry['file'])) {
                 $location['file'] = $entry['file'];

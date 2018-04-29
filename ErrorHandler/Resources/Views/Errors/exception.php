@@ -108,7 +108,7 @@ body {
 
     <div class="error">
     <?php echo $error['type']; ?><?php if(isset($error['code'])): ?> <span style="color:#e1e1e1;padding:0px">[<?php echo $error['code']; ?>]</span><?php endif; ?>
-    <span class="pull-right">Gelato</span>
+    <span class="pull-right">Flextype</span>
     </div>
     <div class="body">
     <strong>Message:</strong> <?php echo htmlspecialchars($error['message'], ENT_COMPAT, 'UTF-8', false); ?>
