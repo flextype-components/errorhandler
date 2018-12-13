@@ -1,3 +1,6 @@
+# v1.0.5, 2018-12-14
+* typo fixes
+
 # v1.0.4, 2018-04-29
 * infrastructure changes
 
