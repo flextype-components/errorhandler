@@ -2,6 +2,8 @@
 ![version](https://img.shields.io/badge/version-1.0.4-brightgreen.svg?style=flat-square "Version")
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://github.com/flextype-components/errorhandler/blob/master/LICENSE)
 
+![preview](preview.png)
+
 Error Handler Component for errors handling.
 
 ### Installation
